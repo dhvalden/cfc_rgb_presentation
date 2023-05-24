@@ -1,0 +1,557 @@
+<!doctype html>
+
+<!-- Preamble -->
+
+<html lang="en">
+    <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>RBG 25 of May 2023</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/moon.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<!-- <link rel="stylesheet" href="plugin/highlight/solarized-dark.css"> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/arta.min.css">
+    </head>
+    <body>
+	<div class="reveal">
+	    <div class="slides">
+
+		<!-- Slides start here -->
+
+		<!-- Title Slide -->
+		<section>
+		    <h2>Current Projects</h2>
+		    <p>
+			<b>
+			    Charles Rahal<sup>1, 2</sup><br>
+			    Daniel Valdenegro<sup>1, 2</sup><br>
+			</b>
+		    </p>
+		    <small>
+			<p>
+			    <sup>1</sup>Leverhulme Centre for Demographic Science, University of Oxford<br>
+			    <sup>2</sup>Centre for Care, University of Oxford<br>
+			</p>
+		    </small>
+		</section>
+		
+		<!-- Nrobust Section  -->
+		
+		<section>
+		    <section>
+			<h3><b><em>NRobust:</em></b></h3>
+			A Python library for multiversal analysis.
+		    </section>
+		    <section data-auto-animate>
+			<h3>The issue</h3>
+		    </section>
+		    <section data-auto-animate>
+			<h3>The issue</h3>
+			<ul>
+			    <span style="font-size:0.7em">
+				<li>There has recently been an increasing amount of attention paid to the levels of
+				    uncertainty around estimates produced in the academic social sciences,
+				    with the issue of researcher-induced uncertainty addressed in several high-profile papers.</li>
+			    </span>
+			</ul>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <img src="./imgs/many_researchers.png"
+				 style="height: 200px; margin: 1 auto 4rem auto; background: transparent;">
+			</span>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <img src="./imgs/evaluating_nhb.png"
+				 style="height: 200px; margin: 1 auto 4rem auto; background: transparent;">
+			</span>
+		    </section>
+		    <section data-auto-animate>
+			<h3>The issue</h3>
+			<ul>
+			    <span style="font-size:0.7em">
+				<li>A key issue in researcher-induced uncertainty is the sensitivity of the estimates
+				    to different model specifications. These model specifications usually include all
+				    possible combinations of 'control' variables, along with other analytical choices.</li>
+			    </span>
+			</ul>
+		    </section>
+		    <section data-auto-animate>
+			<h3>The issue</h3>
+			<ul>
+			    <span style="font-size:0.7em">
+				<li>This has come to be known as 'multiverse analysis' when examining multiple types of
+				    'researcher degrees of freedom' or 'specification-curve analysis'
+				    when exclusively considering specification choices.</li>
+			    </span>
+			</ul>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <img src="./imgs/spec_fig.png"
+				 style="height: 300px; margin: 1 auto 4rem auto; background: transparent;">
+			</span>
+		    </section>
+		    <section data-auto-animate>
+			<h3>The issue</h3>
+			<ul>
+			    <span style="font-size:0.7em">
+				<li>The varying quality and stability of such routines usually affects
+				    replication efforts, undermining their robustness; ironically
+				    one the primary goals of conducting multiverse/specification-curve
+				    analysis in the first place.</li>
+			    </span>
+			</ul>
+		    </section>
+		    <section data-auto-animate data-auto-animate-restart>
+			<h3>Our proposal</h3>
+		    </section>
+		    <section data-auto-animate>
+			<h3>Our proposal</h3>
+			<p style="font-size:0.7em">
+			    Giving a standar multiple linear regresion model:
+			</p>
+			<p style="font-size:0.7em">
+			    $$
+			    Y_i = \alpha_0 + \beta_1X_{i,1} + \sum_{k=2}^{K}\beta_kX_{i,k}
+			    +\sum_{j=1}^{J}\lambda_{j}c_{i,j} + \epsilon_i 
+			    $$
+			</p>
+			<p style="font-size:0.7em">
+			    For each observation $i = 1, \dots, N$ with
+			    $\{x_{i,1}, \dots x_{i,K}\} \in X$
+			    being a fixed set of predictors, our approach allows us to:
+			</p>
+		    </section>
+		    <section data-auto-animate>
+			<h3>Our proposal</h3>
+			<p style="font-size:0.7em">
+			    $$
+			    Y_i = \alpha_0 + \textcolor{red}{\beta_1X_{i,1}} + \sum_{k=2}^{K}\beta_kX_{i,k}
+			    +\sum_{j=1}^{J}\lambda_{j}c_{i,j} + \epsilon_i 
+			    $$
+			</p>
+			<ul>
+			    <li style="font-size:0.5em">
+				Isolate the variation in a 'feasible' output space pertaining
+				to a specific coefficient of interest ($\beta_1$).
+			    </li>
+			</ul>
+		    </section>
+		    <section data-auto-animate>
+			<h3>Our proposal</h3>
+			<p style="font-size:0.7em">
+			    $$
+			    Y_i = \alpha_0 + \beta_1X_{i,1} + \textcolor{red}{\sum_{k=2}^{K}\beta_kX_{i,k}}
+			    +\sum_{j=1}^{J}\lambda_{j}c_{i,j} + \epsilon_i
+			    $$
+			</p>
+			<ul>
+			    <li style="font-size:0.5em">
+				Isolate the variation in a 'feasible' output space pertaining
+				to a specific coefficient of interest ($\beta_1$).
+			    </li>
+			    <li style="font-size:0.5em">
+				Include a set of variables $\{x_{i, 2} \dots x_{i,K}$)
+				variables which should always be included in the model space.
+			    </li>
+			</ul>
+		    </section>
+		    <section data-auto-animate>
+			<h3>Our proposal</h3>
+			<p style="font-size:0.7em">
+			    $$
+			    Y_i = \alpha_0 + \beta_1X_{i,1} + \sum_{k=2}^{K}\beta_kX_{i,k}
+			    + \textcolor{red}{\sum_{j=1}^{J}\lambda_{j}c_{i,j}} + \epsilon_i
+			    $$
+			</p>
+			<ul>
+			    <li style="font-size:0.5em">
+				Isolate the variation in a 'feasible' output space pertaining
+				to a specific coefficient of interest ($\beta_1$).
+			    </li>
+			    <li style="font-size:0.5em">
+				Include a set of variables $\{x_{i, 2} \dots x_{i,K}$)
+				variables which should always be included in the model space.
+			    </li>
+			    <li style="font-size:0.5em">
+				Estimate the model with all possible combinations of subsets of control variables
+				$\{c_1, \dots, c_J\}$ of any length up to $J$.
+			    </li>
+			</ul>
+		    </section>
+		    <section data-auto-animate>
+			<h3>Our proposal</h3>
+			<p style="font-size:0.7em">
+			    $$
+			    \textcolor{red}{Y_i} = \alpha_0 + \beta_1X_{i,1} + \sum_{k=2}^{K}\beta_kX_{i,k}
+			    + \sum_{j=1}^{J}\lambda_{j}c_{i,j} + \epsilon_i
+			    $$
+			</p>
+			<ul>
+			    <li style="font-size:0.5em">
+				Isolate the variation in a 'feasible' output space pertaining
+				to a specific coefficient of interest ($\beta_1$).
+			    </li>
+			    <li style="font-size:0.5em">
+				Include a set of variables $\{x_{i, 2} \dots x_{i,K}$)
+				variables which should always be included in the model space.
+			    </li>
+			    <li style="font-size:0.5em">
+				Estimate the model with all possible combinations of subsets of control variables
+				$\{c_1, \dots, c_J\}$ of any length up to $J$.
+			    </li>
+			    <li style="font-size:0.5em">
+				Compute the model with the arithmetic mean of all possible combinations of
+				$\{y_1, \dots, y_{M}\}$ as the dependent variable.
+			    </li>
+			</ul>
+		    </section>
+		    <section data-auto-animate>
+			<h3>Our proposal</h3>
+			<p style="font-size:0.7em">
+			    $$
+			    Y_i = \alpha_0 + \beta_1X_{i,1} + \sum_{k=2}^{K}\beta_kX_{i,k}
+			    + \sum_{j=1}^{J}\lambda_{j}c_{i,j} + \epsilon_i
+			    $$
+			</p>
+			<ul>
+			    <li style="font-size:0.5em">
+				Isolate the variation in a 'feasible' output space pertaining
+				to a specific coefficient of interest ($\beta_1$).
+			    </li>
+			    <li style="font-size:0.5em">
+				Include a set of variables $\{x_{i, 2} \dots x_{i,K}$)
+				variables which should always be included in the model space.
+			    </li>
+			    <li style="font-size:0.5em">
+				Estimate the model with all possible combinations of subsets of control variables
+				$\{c_1, \dots, c_J\}$ of any length up to $J$.
+			    </li>
+			    <li style="font-size:0.5em">
+				Compute the model with the arithmetic mean of all possible combinations of
+				$\{y_1, \dots, y_{M}\}$ as the dependent variable.
+			    </li>
+			    <li style="font-size:0.5em">
+				Select a posteriori models or weight combinations of well-specified
+				models for reliable inference.
+			    </li>
+			</ul>
+		    </section>
+		    <section data-auto-animate data-auto-animate-restart>
+			<h3>How does it look like?</h3>
+		    </section>
+		    <section data-auto-animate>
+			<h3>How does it look like?</h3>
+			<p style="font-size:0.7em">
+			    The user-facing code looks like this:
+			</p>
+			<p>
+			    <pre data-id="code-animation">
+				<code class="hljs python" data-trim data-line-numbers>
+                                    from nrobust.models import OLSRobust
+                                    import pandas as pd
+                                    import numpy as np
+                                    import matplotlib.pyplot as
+                                     
+                                    df = pd.read_csv('Guber1999data.csv')
+                                     
+                                    x = ["Spend"]
+                                    c = ["StuTeaRat", "Salary", "PrcntTake"]
+                                    y = ["SATT"]
+                                     
+                                    example = OLSRobust(y=y, x=x, data=df)
+                                     
+                                    example.fit(controls=c,
+                                                draws=500,
+                                                replace=True)
+                                     
+                                    results = example.get_results()
+                                     
+                                    fig, ax1, ax2, ax3 = results.plot(specs=[["PrcntTake", "Salary"]],
+                                                                      ic='bic')
+                                    plt.show()
+				</code>
+			    </pre>
+			</p>
+		    </section>
+		    <section data-auto-animate>
+			<h3>How does it look like?</h3>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <img src="./imgs/fig1.png"
+				 style="height: 400px; margin: 1 auto 4rem auto; background: transparent;">
+			</span>
+		    </section>
+		    <section data-auto-animate>
+			<h3>How does it look like?</h3>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <img src="./imgs/union_curve.png"
+				 style="height: 400px; margin: 1 auto 4rem auto; background: transparent;">
+			</span>
+		    </section>
+                </section>
+
+		<!-- Cost of Care Section -->
+		<section>
+		    <section>
+			<h3><b><em>Cost of Care:</em></b></h3>
+			Estimating structural inequalities in carers income.
+		    </section>
+		    <section>
+			<h3>Method</h3>
+		    </section>
+		    <section data-auto-animate>
+			<p>We draw inspiration from this amazing paper:</p>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <img src="./imgs/vagni_breen.png"
+				 style="height: 500px; margin: 0 auto 4rem auto; background: transparent;">
+			</span>
+		    </section>
+                    <section data-auto-animate>
+			<p>...Which in turns draw inspiration from this other amazing paper:</p>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <img src="./imgs/abadie.png"
+				 style="height: 500px; margin: 0 auto 4rem auto; background: transparent;">
+			</span>
+		    </section>
+		    <section data-auto-animate>
+			<h3>So... What is this Synthetic Control Method?</h3>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <p>Asumming we have time series data from a unit that received some
+				"treatment" at some time "T0", and data from units that didn't recived the treatment,
+				the idea is to create an equivalent "control" unit based on the data from the untreated units.
+				This synthetic control should behave very similar to the trated unit up until the moment of treatment,
+				where it should behave as if nothing has happaned.</p>
+			</span>
+		    </section>
+		    <section data-auto-animate>
+			<h3>More formally...</h3>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <p>
+				The synthetic control method proposed that a weighted sum of similar
+				untreated units might aproximate well to an untreated version of our unit of interest:
+				
+				\[
+				\begin{equation}
+				\hat{Y}_{0_{t}}(0) = \mu + \sum^{N}_{i=1}\omega_{i} \cdot Y_{i_{t}}
+				\end{equation}
+				\]
+
+				Meaning that a series of weights $\omega$ for every control units,
+				multiplied to the value of $Y$ of each control unit $i$ at every step $t$
+				will yield the value $\hat{Y}_{0}(0)$ of our synthetic untreated unit for every step $t$.
+			    </p>
+			</span>
+		    </section>
+		    <section data-auto-animate>
+			<h3>More formally...</h3>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <p>
+				Now, intuitively, the next step is to figure out a way to find the correct
+				weights $\omega_{i}$ and $\mu$. Since we are mostly interested in finding a synthetic
+				control for a treated unit that is equivalent up to the moment of the treatment,
+				we should only take into account the data up to $T_{0}$ to create the weights.
+				More formally, we are interested in finding a vector of weights that minimises the
+				difference between our treated unit and the synthetic control:
+
+				$$
+				\begin{equation}
+				(\hat{\mu}, \hat{\omega}) = \underset{\mu, \omega}{\operatorname{argmin}}
+				\sum_{t=1}^{T_{0}}\left(Y_{0_{t}} - \mu - \sum^{N}_{i=1}\omega_{i} \cdot Y_{i_{t}} \right)^{2}
+				\end{equation}
+				$$
+			    </p>
+			</span>
+		    </section>
+		    <section data-auto-animate>
+			<h3>More formally...</h3>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <p>
+				The above expression is essentially a least squares solution to the problem.
+				However, there is reason to avoid OLS, one of them being overfitting.
+				One of the ways to prevent such problem is to impose some restrictions:
+
+				$$
+				\begin{equation}
+				(\hat{\mu}, \hat{\omega}) = \underset{\mu, \omega}{\operatorname{argmin}}
+				\sqrt{\sum_{t=1}^{T_{0}}\left(Y_{0_{t}} - \mu - \sum^{N}_{i=1}\omega_{i}
+				\cdot Y_{i_{t}} \right)^{2}} \\ 
+				\end{equation}
+				$$
+
+				$$
+				\textrm{s.t.} \quad \mu=0; \quad \sum^{N}_{i=1}\omega_{i}=1;
+				\quad \textrm{and} \quad \omega_{i} \ge 0 \quad \forall i
+				$$
+				
+				In other words, no intercept, all weights must sum to 1, and no-negative weights.
+			    </p>
+			</span>
+		    </section>
+		    <section data-auto-animate>
+			<h3>A toy example...</h3>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <p>
+				<pre data-id="code-animation">
+				    <code class="hljs python" data-trim data-line-numbers>
+                                        import random
+                                        import math
+                                        import pandas as pd
+                                        import matplotlib.pyplot as plt
+                                         
+                                        def gen_data(steps, cases):
+                                            X = list(range(1,steps))
+                                            c = []
+                                            for i in range(0, cases):
+                                                y = []
+                                                py = random.gammavariate(2, 2)
+                                                for x in X:
+                                                    yi = py + random.gauss(0, 1)
+                                                    py = yi
+                                                    y.append(yi)
+                                                c.append(y)
+                                            df = pd.DataFrame(c).T
+                                            df.columns = [f'c{x}' for x in range(1, cases+1)]
+                                            t = []
+                                            py = 0
+                                            for i, x in enumerate(X):
+                                                if i <= 50:
+                                                    yi = py + random.gauss(0, 1)
+                                                    py = yi
+                                                else:
+                                                    yi = py - random.gammavariate(1,1)
+                                                    py = yi
+                                                t.append(yi)
+                                            T = pd.Series(t)
+                                            df['t'] = T
+                                            return df
+				    </code>
+				</pre>
+			    </p>
+			</span>
+		    </section>
+		    <section data-auto-animate>
+			<h3>A toy example...</h3>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <p>
+				<img src="./imgs/toy_data.png"
+				     style="height: 300px; margin: 0 auto 4rem auto; background: transparent;">
+			    </p>
+			</span>
+		    </section>
+		    <section data-auto-animate>
+			<h3>A toy example...</h3>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <p>
+				<pre data-id="code-animation">
+				    <code class="hljs python" data-trim data-line-numbers>
+
+                                        def argmin_w(W, Y_i, Y_0):
+                                            return np.sqrt(np.sum((Y_0 - Y_i.dot(W))**2))
+                                            
+                                         
+                                        def get_w(Y_i, Y_0):
+                                            w_start = [1/Y_i.shape[1]]*Y_i.shape[1]
+                                            weights = minimize(partial(argmin_w, Y_i=Y_i, Y_0=Y_0),
+                                                               np.array(w_start),
+                                                               method='SLSQP',
+                                                               constraints=({'type': 'eq',
+                                                                             'fun': lambda x: np.sum(x) - 1}),
+                                                               bounds=[(0.0, 1.0)]*len(w_start),
+                                                               )
+                                            return weights.x
+                                         
+                                        weights = get_w(Y_i, Y_0)
+                                         
+                                        synth = df.drop(columns='t').dot(weights)
+				    </code>
+				</pre>
+			    </p>
+			</span>
+		    </section>
+		    <section data-auto-animate>
+			<h3>A toy example...</h3>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <p>
+				<img src="./imgs/toy_synth.png"
+				     style="height: 300px; margin: 0 auto 4rem auto; background: transparent;">
+			    </p>
+			</span>
+		    </section>
+		    <section data-auto-animate>
+			<h3>Preliminary Insights</h3>
+		    </section>
+                    <section data-auto-animate>
+			<h3>The original formulation of SCM is very computationally inefficcient</h3>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <p>
+				<img src="./imgs/time_it.png"
+				     style="height: 300px; margin: 0 auto 4rem auto; background: transparent;">
+			    </p>
+			    <p>It takes around 2 minutes to find the weights on a sample of a conservative 1000
+				cases over 100 steps (or 10 covariates with 10 steps) for 1 treated case. For a conservative ~200 treated cases,
+				this would take 6 hours. If we want to bootstrap, could take days.</p>
+			</span>
+		    </section>
+		    <section data-auto-animate>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <p>We propose to reduce the numbers of controls cases on which to look-up to save computational time,
+				by first running nearest-neighbors algorithm and select the 50 nearest. This makes the process <b>~100 times fasters</b>.</p>
+			</span>
+		    </section>
+		    <section data-auto-animate>
+			<p><h3>There is an initial effect of care responsabilities on net income!</h3></p>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <p>
+				<img src="./imgs/initial_results.png"
+				     style="height: 500px; margin: 0 auto 4rem auto; background: transparent;">
+			    </p>
+			</span>
+		    </section>
+		</section>
+		
+		<!-- Home Devises and Simulation Project = -->
+
+		<section>
+		    <section>
+			<h3><b><em>Coming soon:</em></b></h3>
+			Projects on the horizon...
+		    </section>
+		    <section data-auto-animate>
+			<h3> Sheffield City Council Collaboration</h3>
+			<p style="font-size:0.7em">
+			    Collaboration with Shefield City Council to analysis data collected by care
+			    providers and smart home devices, in oder to produce predictive models of care events.
+			</p>
+		    </section>
+		    <section data-auto-animate>
+			<h3>Agent-Based simulation of care sector in UK</h3>
+			<p style="font-size:0.7em">
+			    The goal of this is the creating of a tool that allows for predicting medium to long term
+			    scenarios on care demand and provision in the UK, based on possible demographic and economic variations.
+			</p>
+		    </section>
+		</section>
+            </div>
+        </div>
+
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script src="plugin/math/math.js"></script>
+	<script src="plugin/zoom/zoom.js"></script>
+        <script>
+         // More info about initialization & config:
+         // - https://revealjs.com/initialization/
+         // - https://revealjs.com/config/
+         Reveal.initialize({
+             hash: true,
+
+             // Learn about plugins: https://revealjs.com/plugins/
+             plugins: [ RevealZoom, RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+         });
+        </script>
+    </body>
+</html>
