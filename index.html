@@ -7,16 +7,16 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>RBG 25 of May 2023</title>
+	<title>LCDS Seminar 03 June 2023</title>
 
 	<link rel="stylesheet" href="dist/reset.css">
 	<link rel="stylesheet" href="dist/reveal.css">
-	<link rel="stylesheet" href="dist/theme/moon.css">
+	<link rel="stylesheet" href="dist/theme/white.css">
 
 	<!-- Theme used for syntax highlighted code -->
 	<!-- <link rel="stylesheet" href="plugin/highlight/solarized-dark.css"> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/arta.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
     </head>
     <body>
 	<div class="reveal">
@@ -29,7 +29,6 @@
 		    <h2>Current Projects</h2>
 		    <p>
 			<b>
-			    Charles Rahal<sup>1, 2</sup><br>
 			    Daniel Valdenegro<sup>1, 2</sup><br>
 			</b>
 		    </p>
@@ -40,264 +39,97 @@
 			</p>
 		    </small>
 		</section>
-		
-		<!-- Nrobust Section  -->
-		
-		<section>
-		    <section>
-			<h3><b><em>NRobust:</em></b></h3>
-			A Python library for multiversal analysis.
-		    </section>
-		    <section data-auto-animate>
-			<h3>The issue</h3>
-		    </section>
-		    <section data-auto-animate>
-			<h3>The issue</h3>
-			<ul>
-			    <span style="font-size:0.7em">
-				<li>There has recently been an increasing amount of attention paid to the levels of
-				    uncertainty around estimates produced in the academic social sciences,
-				    with the issue of researcher-induced uncertainty addressed in several high-profile papers.</li>
-			    </span>
-			</ul>
-			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
-			    <img src="./imgs/many_researchers.png"
-				 style="height: 200px; margin: 1 auto 4rem auto; background: transparent;">
-			</span>
-			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
-			    <img src="./imgs/evaluating_nhb.png"
-				 style="height: 200px; margin: 1 auto 4rem auto; background: transparent;">
-			</span>
-		    </section>
-		    <section data-auto-animate>
-			<h3>The issue</h3>
-			<ul>
-			    <span style="font-size:0.7em">
-				<li>A key issue in researcher-induced uncertainty is the sensitivity of the estimates
-				    to different model specifications. These model specifications usually include all
-				    possible combinations of 'control' variables, along with other analytical choices.</li>
-			    </span>
-			</ul>
-		    </section>
-		    <section data-auto-animate>
-			<h3>The issue</h3>
-			<ul>
-			    <span style="font-size:0.7em">
-				<li>This has come to be known as 'multiverse analysis' when examining multiple types of
-				    'researcher degrees of freedom' or 'specification-curve analysis'
-				    when exclusively considering specification choices.</li>
-			    </span>
-			</ul>
-			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
-			    <img src="./imgs/spec_fig.png"
-				 style="height: 300px; margin: 1 auto 4rem auto; background: transparent;">
-			</span>
-		    </section>
-		    <section data-auto-animate>
-			<h3>The issue</h3>
-			<ul>
-			    <span style="font-size:0.7em">
-				<li>The varying quality and stability of such routines usually affects
-				    replication efforts, undermining their robustness; ironically
-				    one the primary goals of conducting multiverse/specification-curve
-				    analysis in the first place.</li>
-			    </span>
-			</ul>
-		    </section>
-		    <section data-auto-animate data-auto-animate-restart>
-			<h3>Our proposal</h3>
-		    </section>
-		    <section data-auto-animate>
-			<h3>Our proposal</h3>
-			<p style="font-size:0.7em">
-			    Giving a standar multiple linear regresion model:
-			</p>
-			<p style="font-size:0.7em">
-			    $$
-			    Y_i = \alpha_0 + \beta_1X_{i,1} + \sum_{k=2}^{K}\beta_kX_{i,k}
-			    +\sum_{j=1}^{J}\lambda_{j}c_{i,j} + \epsilon_i 
-			    $$
-			</p>
-			<p style="font-size:0.7em">
-			    For each observation $i = 1, \dots, N$ with
-			    $\{x_{i,1}, \dots x_{i,K}\} \in X$
-			    being a fixed set of predictors, our approach allows us to:
-			</p>
-		    </section>
-		    <section data-auto-animate>
-			<h3>Our proposal</h3>
-			<p style="font-size:0.7em">
-			    $$
-			    Y_i = \alpha_0 + \textcolor{red}{\beta_1X_{i,1}} + \sum_{k=2}^{K}\beta_kX_{i,k}
-			    +\sum_{j=1}^{J}\lambda_{j}c_{i,j} + \epsilon_i 
-			    $$
-			</p>
-			<ul>
-			    <li style="font-size:0.5em">
-				Isolate the variation in a 'feasible' output space pertaining
-				to a specific coefficient of interest ($\beta_1$).
-			    </li>
-			</ul>
-		    </section>
-		    <section data-auto-animate>
-			<h3>Our proposal</h3>
-			<p style="font-size:0.7em">
-			    $$
-			    Y_i = \alpha_0 + \beta_1X_{i,1} + \textcolor{red}{\sum_{k=2}^{K}\beta_kX_{i,k}}
-			    +\sum_{j=1}^{J}\lambda_{j}c_{i,j} + \epsilon_i
-			    $$
-			</p>
-			<ul>
-			    <li style="font-size:0.5em">
-				Isolate the variation in a 'feasible' output space pertaining
-				to a specific coefficient of interest ($\beta_1$).
-			    </li>
-			    <li style="font-size:0.5em">
-				Include a set of variables $\{x_{i, 2} \dots x_{i,K}$)
-				variables which should always be included in the model space.
-			    </li>
-			</ul>
-		    </section>
-		    <section data-auto-animate>
-			<h3>Our proposal</h3>
-			<p style="font-size:0.7em">
-			    $$
-			    Y_i = \alpha_0 + \beta_1X_{i,1} + \sum_{k=2}^{K}\beta_kX_{i,k}
-			    + \textcolor{red}{\sum_{j=1}^{J}\lambda_{j}c_{i,j}} + \epsilon_i
-			    $$
-			</p>
-			<ul>
-			    <li style="font-size:0.5em">
-				Isolate the variation in a 'feasible' output space pertaining
-				to a specific coefficient of interest ($\beta_1$).
-			    </li>
-			    <li style="font-size:0.5em">
-				Include a set of variables $\{x_{i, 2} \dots x_{i,K}$)
-				variables which should always be included in the model space.
-			    </li>
-			    <li style="font-size:0.5em">
-				Estimate the model with all possible combinations of subsets of control variables
-				$\{c_1, \dots, c_J\}$ of any length up to $J$.
-			    </li>
-			</ul>
-		    </section>
-		    <section data-auto-animate>
-			<h3>Our proposal</h3>
-			<p style="font-size:0.7em">
-			    $$
-			    \textcolor{red}{Y_i} = \alpha_0 + \beta_1X_{i,1} + \sum_{k=2}^{K}\beta_kX_{i,k}
-			    + \sum_{j=1}^{J}\lambda_{j}c_{i,j} + \epsilon_i
-			    $$
-			</p>
-			<ul>
-			    <li style="font-size:0.5em">
-				Isolate the variation in a 'feasible' output space pertaining
-				to a specific coefficient of interest ($\beta_1$).
-			    </li>
-			    <li style="font-size:0.5em">
-				Include a set of variables $\{x_{i, 2} \dots x_{i,K}$)
-				variables which should always be included in the model space.
-			    </li>
-			    <li style="font-size:0.5em">
-				Estimate the model with all possible combinations of subsets of control variables
-				$\{c_1, \dots, c_J\}$ of any length up to $J$.
-			    </li>
-			    <li style="font-size:0.5em">
-				Compute the model with the arithmetic mean of all possible combinations of
-				$\{y_1, \dots, y_{M}\}$ as the dependent variable.
-			    </li>
-			</ul>
-		    </section>
-		    <section data-auto-animate>
-			<h3>Our proposal</h3>
-			<p style="font-size:0.7em">
-			    $$
-			    Y_i = \alpha_0 + \beta_1X_{i,1} + \sum_{k=2}^{K}\beta_kX_{i,k}
-			    + \sum_{j=1}^{J}\lambda_{j}c_{i,j} + \epsilon_i
-			    $$
-			</p>
-			<ul>
-			    <li style="font-size:0.5em">
-				Isolate the variation in a 'feasible' output space pertaining
-				to a specific coefficient of interest ($\beta_1$).
-			    </li>
-			    <li style="font-size:0.5em">
-				Include a set of variables $\{x_{i, 2} \dots x_{i,K}$)
-				variables which should always be included in the model space.
-			    </li>
-			    <li style="font-size:0.5em">
-				Estimate the model with all possible combinations of subsets of control variables
-				$\{c_1, \dots, c_J\}$ of any length up to $J$.
-			    </li>
-			    <li style="font-size:0.5em">
-				Compute the model with the arithmetic mean of all possible combinations of
-				$\{y_1, \dots, y_{M}\}$ as the dependent variable.
-			    </li>
-			    <li style="font-size:0.5em">
-				Select a posteriori models or weight combinations of well-specified
-				models for reliable inference.
-			    </li>
-			</ul>
-		    </section>
-		    <section data-auto-animate data-auto-animate-restart>
-			<h3>How does it look like?</h3>
-		    </section>
-		    <section data-auto-animate>
-			<h3>How does it look like?</h3>
-			<p style="font-size:0.7em">
-			    The user-facing code looks like this:
-			</p>
-			<p>
-			    <pre data-id="code-animation">
-				<code class="hljs python" data-trim data-line-numbers>
-                                    from nrobust.models import OLSRobust
-                                    import pandas as pd
-                                    import numpy as np
-                                    import matplotlib.pyplot as
-                                     
-                                    df = pd.read_csv('Guber1999data.csv')
-                                     
-                                    x = ["Spend"]
-                                    c = ["StuTeaRat", "Salary", "PrcntTake"]
-                                    y = ["SATT"]
-                                     
-                                    example = OLSRobust(y=y, x=x, data=df)
-                                     
-                                    example.fit(controls=c,
-                                                draws=500,
-                                                replace=True)
-                                     
-                                    results = example.get_results()
-                                     
-                                    fig, ax1, ax2, ax3 = results.plot(specs=[["PrcntTake", "Salary"]],
-                                                                      ic='bic')
-                                    plt.show()
-				</code>
-			    </pre>
-			</p>
-		    </section>
-		    <section data-auto-animate>
-			<h3>How does it look like?</h3>
-			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
-			    <img src="./imgs/fig1.png"
-				 style="height: 400px; margin: 1 auto 4rem auto; background: transparent;">
-			</span>
-		    </section>
-		    <section data-auto-animate>
-			<h3>How does it look like?</h3>
-			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
-			    <img src="./imgs/union_curve.png"
-				 style="height: 400px; margin: 1 auto 4rem auto; background: transparent;">
-			</span>
-		    </section>
-                </section>
 
 		<!-- Cost of Care Section -->
 		<section>
 		    <section>
 			<h3><b><em>Cost of Care:</em></b></h3>
 			Estimating structural inequalities in carers income.
+			<small>
+			    <p>
+				<b>
+				    Daniel Valdenegro<sup>1</sup><br>
+				    Charles Rahal<sup>1</sup><br>
+				    Yanan Zhang<sup>2</sup><br>
+				    Maria Petrillo<sup>3</sup><br>
+				    Matthew Bennett<sup>3</sup><br>
+				    Gwilym B. Pryce<sup>3</sup><br>
+				</b>
+			    </p>
+			</small>
+			<small>
+			    <p>
+				<sup>1</sup>Leverhulme Centre for Demographic Science and the Centre for Care, University of Oxford<br>
+				<sup>2</sup>Oxford Institute of Population Ageing, University of Oxford<br>
+				<sup>3</sup>Centre for Care, University of Sheffield<br>
+                            </p>
+			</small>
 		    </section>
+		    <section>
+			<h3>Antecedents</h3>
+		    </section>
+		    <section>
+			<h3>The issue</h3>
+			<ul>
+			    <span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+				<li>Low fertility rates coupled with advancements in longevity have
+				    simultaneously increased demand for -- and reduced the supply of -- social care.</li>
+			    </span>
+			    <span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+				<li>The demand of care is being suplied by informal unpaid carers.</li>
+			    </span>
+			    <span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+				<li>We lack reliable, causal estimates of the effect that providing this
+				    care has, and what optimal policy responses should be.</li>
+			    </span>
+			    <span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+				<li>We also lack an understanding of how unequal these inter-sectional costs might be.</li>
+			    </span>
+			</ul>
+		    </section>
+		    <section>
+			<h3>Research Questions</h3>
+			<ul>
+			    <span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+				<li>What are the differences in net household income in real terms
+				    between carers and non-carers across time?</li>
+			    </span>
+			    <span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+				<li>How do these effects aggregate up from the micro,
+				    to the meso and macro levels?</li>
+			    </span>
+			    <span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+				<li>How are these effects stratified across age, gender,
+				    ethnicity or geo-spatial location?</li>
+			    </span>
+			    <span style="font-size:1em" class="fragment fade-in">
+				<li><span class="fragment highlight-red">How</span> do we estimate this!?</li>
+			    </span>
+			</ul>
+		    </section>
+
+		    <section><h3>Data</h3></section>
+                    <section>
+			<h4>UKHLS Survey</h4>
+			<ul>
+			    <span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+				<li>Large, decade long, representative household panel study, covering around 40K households.</li>
+			    </span>
+			    <span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+				<li>Collects information about income of the individuals as well as their care responsabilities.</li>
+			    </span>
+			    <span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+				<li>Provides plenty of demographic variables to stratify.</li>
+			    </span>
+			    <span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+				<li>Provides low level geo-spatial data of the household.</li>
+			    </span>
+			    <span style="font-size:1em" class="fragment fade-in">
+				<li> So far so good...</li>
+			    </span>
+			</ul>
+		    </section>
+		    
 		    <section>
 			<h3>Method</h3>
 		    </section>
@@ -496,11 +328,163 @@
 		    </section>
 		    <section data-auto-animate>
 			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <p>
+				<img src="./imgs/Knn.png"
+				     style="height: 300px; margin: 0 auto 4rem auto; background: transparent;">
+			    </p>
+			    
 			    <p>We propose to reduce the numbers of controls cases on which to look-up to save computational time,
-				by first running nearest-neighbors algorithm and select the 50 nearest. This makes the process <b>~100 times fasters</b>.</p>
+				by first running K-nearest-neighbors algorithm and select the K nearest. This makes the process <b>~100 times fasters</b>.</p>
 			</span>
 		    </section>
-		    <section data-auto-animate>
+
+		    
+		    <section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+			<h2>Data preparation</h2>
+			<p>Take cases with at least 3 measures before treatment</p>
+			<div class="r-hstack justify-center">
+			    <div data-id="box1" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">1</div>
+			    <div data-id="box2" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">2</div>
+			    <div data-id="box3" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">3</div>
+			    <div data-id="box4" style="background: red; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">4</div>
+			    <div data-id="box5" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">5</div>
+			    <div data-id="box6" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">6</div>
+			    <div data-id="box7" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">7</div>
+			</div>
+		    </section>
+		    <section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+			<h2>Data preparation</h2>
+			<p>Reindex based on treatment time.</p>
+			<div class="r-hstack justify-center">
+			    <div data-id="box1" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-3</div>
+			    <div data-id="box2" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-2</div>
+			    <div data-id="box3" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-1</div>
+			    <div data-id="box4" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">0</div>
+			    <div data-id="box5" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">1</div>
+			    <div data-id="box6" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">2</div>
+			    <div data-id="box7" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">3</div>
+			</div>
+		    </section>
+		    <section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+			<h2>Data preparation</h2>
+			<p>Find control cases with the same waves.</p>
+			<div class="r-hstack justify-center">
+			    <div data-id="box1" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-3</div>
+			    <div data-id="box2" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-2</div>
+			    <div data-id="box3" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-1</div>
+			    <div data-id="box4" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">0</div>
+			    <div data-id="box5" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">1</div>
+			    <div data-id="box6" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">2</div>
+			    <div data-id="box7" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">3</div>
+			</div>
+			<div class="r-hstack justify-center">
+			    <div data-id="sbox1" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-3</div>
+			    <div data-id="sbox2" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-2</div>
+			    <div data-id="sbox3" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-1</div>
+			    <div data-id="sbox4" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">0</div>
+			    <div data-id="sbox5" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">1</div>
+			    <div data-id="sbox6" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">2</div>
+			    <div data-id="sbox7" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">3</div>
+			</div>
+			<div class="r-hstack justify-center">
+			    <div data-id="sbox1" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-3</div>
+			    <div data-id="sbox2" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-2</div>
+			    <div data-id="sbox3" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-1</div>
+			    <div data-id="sbox4" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">0</div>
+			    <div data-id="sbox5" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">1</div>
+			    <div data-id="sbox6" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">2</div>
+			    <div data-id="sbox7" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">3</div>
+			</div>
+		    </section>
+
+		    <section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+			<h2>Data preparation</h2>
+			<p>Repeat the process for every treated case.</p>
+			<div class="r-hstack justify-left">
+			    <div data-id="box1" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-3</div>
+			    <div data-id="box2" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-2</div>
+			    <div data-id="box3" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-1</div>
+			    <div data-id="box4" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">0</div>
+			    <div data-id="box5" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">1</div>
+			    <div data-id="box6" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">2</div>
+			    <div data-id="box7" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">3</div>
+			</div>
+			<div class="r-hstack justify-left">
+			    <div data-id="sbox1" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-3</div>
+			    <div data-id="sbox2" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-2</div>
+			    <div data-id="sbox3" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-1</div>
+			    <div data-id="sbox4" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">0</div>
+			    <div data-id="sbox5" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">1</div>
+			    <div data-id="sbox6" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">2</div>
+			    <div data-id="sbox7" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">3</div>
+			</div>
+			<div class="r-hstack justify-left">
+			    <div data-id="sbox1" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-3</div>
+			    <div data-id="sbox2" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-2</div>
+			    <div data-id="sbox3" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-1</div>
+			    <div data-id="sbox4" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">0</div>
+			    <div data-id="sbox5" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">1</div>
+			    <div data-id="sbox6" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">2</div>
+			    <div data-id="sbox7" style="background: cyan; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">3</div>
+			</div>
+			<div class="r-hstack justify-left">
+			    <div data-id="abox1" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-3</div>
+			    <div data-id="abox2" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-2</div>
+			    <div data-id="abox3" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-1</div>
+			    <div data-id="abox4" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">0</div>
+			    <div data-id="abox5" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">1</div>
+			    <div data-id="abox6" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">2</div>
+			</div>
+			<div class="r-hstack justify-left">
+			    <div data-id="asbox1" style="background: magenta; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-3</div>
+			    <div data-id="asbox2" style="background: magenta; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-2</div>
+			    <div data-id="asbox3" style="background: magenta; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-1</div>
+			    <div data-id="asbox4" style="background: magenta; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">0</div>
+			    <div data-id="asbox5" style="background: magenta; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">1</div>
+			    <div data-id="asbox6" style="background: magenta; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">2</div>
+			</div>
+			<div class="r-hstack justify-left">
+			    <div data-id="asbox1" style="background: magenta; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-3</div>
+			    <div data-id="asbox2" style="background: magenta; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-2</div>
+			    <div data-id="asbox3" style="background: magenta; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-1</div>
+			    <div data-id="asbox4" style="background: magenta; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">0</div>
+			    <div data-id="asbox5" style="background: magenta; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">1</div>
+			    <div data-id="asbox6" style="background: magenta; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">2</div>
+			</div>
+			<div class="r-hstack justify-left">
+			    <div data-id="bbox1" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-4</div>
+			    <div data-id="bbox1" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-3</div>
+			    <div data-id="bbox2" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-2</div>
+			    <div data-id="bbox3" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-1</div>
+			    <div data-id="bbox4" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">0</div>
+			    <div data-id="bbox5" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">1</div>
+			    <div data-id="bbox6" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">2</div>
+			    <div data-id="bbox7" style="background: #999; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">3</div>
+			</div>
+			<div class="r-hstack justify-left">
+			    <div data-id="bsbox1" style="background: yellow; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-4</div>
+			    <div data-id="bsbox1" style="background: yellow; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-3</div>
+			    <div data-id="bsbox2" style="background: yellow; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-2</div>
+			    <div data-id="bsbox3" style="background: yellow; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-1</div>
+			    <div data-id="bsbox4" style="background: yellow; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">0</div>
+			    <div data-id="bsbox5" style="background: yellow; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">1</div>
+			    <div data-id="bsbox6" style="background: yellow; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">2</div>
+			    <div data-id="bsbox7" style="background: yellow; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">3</div>
+			</div>
+			<div class="r-hstack justify-left">
+			    <div data-id="bsbox1" style="background: yellow; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-4</div>
+			    <div data-id="bsbox1" style="background: yellow; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-3</div>
+			    <div data-id="bsbox2" style="background: yellow; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-2</div>
+			    <div data-id="bsbox3" style="background: yellow; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">-1</div>
+			    <div data-id="bsbox4" style="background: yellow; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">0</div>
+			    <div data-id="bsbox5" style="background: yellow; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">1</div>
+			    <div data-id="bsbox6" style="background: yellow; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">2</div>
+			    <div data-id="bsbox7" style="background: yellow; width: 50px; height: 50px; margin: 1px; border-radius: 5px;">3</div>
+			</div>
+		    </section>
+				    
+		
+		<section data-auto-animate>
 			<p><h3>There is an initial effect of care responsabilities on net income!</h3></p>
 			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
 			    <p>
@@ -509,28 +493,188 @@
 			    </p>
 			</span>
 		    </section>
+		    <section data-auto-animate>
+			<p><h3>There is an initial effect of care responsabilities on net income!</h3></p>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <p>
+				<img src="./imgs/initial_results_b.png"
+				     style="height: 500px; margin: 0 auto 4rem auto; background: transparent;">
+			    </p>
+			</span>
+		    </section>
 		</section>
 		
-		<!-- Home Devises and Simulation Project = -->
+		<!-- LLMs Zero-shot project -->
 
 		<section>
 		    <section>
-			<h3><b><em>Coming soon:</em></b></h3>
-			Projects on the horizon...
-		    </section>
-		    <section data-auto-animate>
-			<h3> Sheffield City Council Collaboration</h3>
-			<p style="font-size:0.7em">
-			    Collaboration with Shefield City Council to analysis data collected by care
-			    providers and smart home devices, in oder to produce predictive models of care events.
+			<h3><b><em>LLMs for Zero-Shot classification:</em></b></h3>
+			<p>
+			    Automatic annotation of climate related parliamentary discussions using LLMs.
+			</p>
+			<small>
+			    <p>
+				<b>
+				    Daniel Valdenegro<sup>1</sup><br>
+				    Viktoria Spaiser<sup>2</sup><br>
+				    Nicole Nisbett<sup>2</sup><br>
+				</b>
+			    </p>
+			</small>
+			<p>
+			<small>
+			    <div>
+				<sup>1</sup>Leverhulme Centre for Demographic Science, University of Oxford<br>
+                            </div>
+			    <div>
+				<sup>2</sup>School of Politics and International Studies, University of Leeds<br>
+			    </div>
+			</small>
 			</p>
 		    </section>
 		    <section data-auto-animate>
-			<h3>Agent-Based simulation of care sector in UK</h3>
-			<p style="font-size:0.7em">
-			    The goal of this is the creating of a tool that allows for predicting medium to long term
-			    scenarios on care demand and provision in the UK, based on possible demographic and economic variations.
+			<h3>The problem</h3>
+			<ul>
+			    <li style="font-size:0.7em">
+				Large ammounts (in the order of the tens of thousands) of un-annotated extracts from parliamentary debates.
+			    </li>
+			    <li style="font-size:0.7em">
+				Highly complex and nuanced categories for the classification.
+			    </li>
+			    <li style="font-size:0.7em">
+				Lack of training data for such categories.
+			    </li>
+			    <li style="font-size:0.7em">
+				What to do? Is this hopeless?
+			    </li>
+			</ul>
+		    </section>
+		    <section data-auto-animate>
+			<h3>Proposed solution: Zero-Shot Classification</h3>
+			<p>
+			    <img src="./imgs/zero_shot_example.png"
+				 style="height: 300px; margin: 0 auto 2rem auto; background: transparent;">
 			</p>
+			<ul>
+			    <li style="font-size:0.7em">
+				A pretrained model used to infer an unseen category.
+			    </li>
+			    <li style="font-size:0.7em">
+				The model needs to be able to receive context information about the new category.
+			    </li>
+			</ul>
+		    </section>
+		    <section data-auto-animate>
+			<h3>Zero-Shot Classification: The old way...</h3>
+			<p>
+			    <img src="./imgs/vector_space.png"
+				 style="height: 200px; margin: 0 auto 2rem auto; background: transparent;">
+			</p>
+			<ul>
+			    <li style="font-size:0.5em">
+				We take the context vector and the new data and calculate thier possition in the vector space.
+			    </li>
+			    <li style="font-size:0.5em">
+				Then we use cosine similarity to calculate the probabilities of each class.
+			    </li>
+			    <li style="font-size:0.5em">
+				Given two n-dimensional vectors of attributes, $x$ and $y$, the cosine similarity, $cos(θ)$, is represented using a dot product and magnitude as:
+			    </li>
+			</ul>
+			<p style="font-size:0.5em">
+			    $$ Cosine(x,y)= cos(θ) = \frac{x \cdot y}{|x||y|} $$
+			</p>
+		    </section>
+		    <section data-auto-animate>
+			<h3>Zero-Shot Classification: The old way...</h3>
+			<span style="font-size:0.7em" class="fragment fade-in-then-semi-out">
+			    <p>
+				<pre data-id="code-animation">
+				    <code class="hljs python" data-trim data-line-numbers>
+                                        from transformers import pipeline
+
+                                        pipe = pipeline(model="facebook/bart-large-mnli")
+                                        pipe("I have a problem with my iphone that needs to be resolved asap!", # text to classify
+                                        candidate_labels=["urgent", "not urgent", "phone", "tablet", "computer"] # context sequence,
+                                        )
+                                        # output
+                                        >>> {'sequence': 'I have a problem with my iphone that needs to be resolved asap!!',
+                                            'labels': ['urgent', 'phone', 'computer', 'not urgent', 'tablet'],
+                                            'scores': [0.504, 0.479, 0.013, 0.003, 0.002]}
+				    </code>
+				</pre>
+			    </p>
+			</span>
+			<p style="font-size:0.7em">
+			    However, zero-shot classification is a feature that improves as the size of the models increases.
+			    Bigger, more complex models perform better at this task.
+			</p>
+			<p style="font-size:0.7em">
+			    Additionally, we would like to provide "corrections" to the model in real time, something the this traditional approach does not allow.
+			</p>
+		    </section>
+		    <section data-auto-animate>
+			<h3>Zero-Shot Classification: The new way...</h3>
+			<p>
+			    <img src="./imgs/gpt1.png"
+				 style="height: 300px; margin: 0 auto 0rem auto; background: transparent;">
+			</p>
+			<ul>
+			    <li style="font-size:0.5em">
+				We will use large generative models to perform zero-shot classification.
+			    </li>
+			    <li style="font-size:0.5em">
+				We will provide the model with definitions and examples to perform the classification in the context sequence.
+			    </li>
+			    <li style="font-size:0.5em">
+				The model will then complete the classification using the most likely outcome sequence of tokens, based on the context provided.
+			    </li>
+			</ul>
+		    </section>
+		    <section>
+			<h3>
+			    Live Example
+			</h3>
+		    </section>
+		    <section data-auto-animate>
+			<h3>Zero-Shot Classification: The new way... Drawbacks</h3>
+			<p>
+			    <img src="./imgs/gpt1.png"
+				 style="height: 300px; margin: 0 auto 0rem auto; background: transparent;">
+			</p>
+			<ul>
+			    <li style="font-size:0.5em">
+				The classification is performed based on token prediction and not based on cosine similarity (see examples).
+			    </li>
+			    <li style="font-size:0.5em">
+				Very Large Models requires special hardware.
+			    </li>
+			    <li style="font-size:0.5em">
+				Best performing models are closed-sourced.
+			    </li>
+			</ul>
+		    </section>
+		    <section data-auto-animate>
+			<h3>Zero-Shot Classification: The new way... Our Framework</h3>
+			<ul>
+			    <li style="font-size:0.7em">
+				~700 extracts, manually annotated as testing set, to test accuracy.
+			    </li>
+			    <li style="font-size:0.7em">
+				Treat each classification as an independent annotator.
+			    </li>
+			    <li style="font-size:0.7em">
+				Perform several classification over the testing set using closed-source and open-source models, with several hyper-parameters each.
+			    </li>
+			    <li style="font-size:0.7em">
+				Calculate inter-rater score among the annotator models.
+			    </li>
+			</ul>
+		    </section>
+		    <section>
+			<h3>
+			    Questions? Thank you!
+			</h3>
 		    </section>
 		</section>
             </div>
